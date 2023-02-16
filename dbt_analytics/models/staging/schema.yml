@@ -3,21 +3,24 @@ version: 2
 sources:
     - name: staging
       #For bigquery:
-      #database: taxi-rides-ny-339813
+      database: dtc-de-375803
+
 
       # For postgres:
-      database: production
+      #database: production
 
-      schema: trips_data_all
+      schema: dezoomcamp
 
       # loaded_at_field: record_loaded_at
       tables:
         - name: green_tripdata
         - name: yellow_tripdata
+        - name: yellow_tripdata2
          # freshness:
            # error_after: {count: 6, period: hour}
 
 models:
+    #- name: stg_fhv_tripdata
     - name: stg_green_tripdata
       description: >
         Trip made by green taxis, also known as boro taxis and street-hail liveries.
