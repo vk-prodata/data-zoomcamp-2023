@@ -1,11 +1,11 @@
 {{ config(materialized='table') }}
 
 with job_listing as (
-    select * from {{ ref('stg_job_listing') }}
+    select * from {{ ref('stg_job_listing_info') }}
 ),
 
-dim_title as (
-    select * from {{ ref('dim_title') }}
+dim_job_title as (
+    select * from {{ ref('dim_job_title') }}
 ),
 
 dim_location as (
@@ -23,9 +23,9 @@ select
     jl.avg_salary
 
 from job_listing jl
-inner join dim_title as dt
-on jl.title = pickup_zone.title
+inner join dim_job_title as dt
+on jl.title = dt.title
 inner join dim_location as dl
-on jl.city = dl.city and jl.state = dk.state
+on jl.city = dl.city and jl.state = dl.state
 inner join dim_company as dc
 on jl.company = dc.company

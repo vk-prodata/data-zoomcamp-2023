@@ -14,7 +14,7 @@ sources:
            # error_after: {count: 6, period: hour}
 
 models:
-    - name: stg_job_listing
+    - name: stg_job_listing_info
       description: >
         BigQuery table with cleaned Job info
     #   columns:
